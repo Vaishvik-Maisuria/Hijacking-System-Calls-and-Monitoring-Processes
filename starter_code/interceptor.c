@@ -607,7 +607,8 @@ static int init_function(void) {
     
     //To initialize the table 
     for(i = 0; i < NR_syscalls; i++){
-        table[i].f = sys_call_table[i];
+        //table[i].f = sys_call_table[i];
+        table[i].f = NULL;
         table[i].monitored = 0;
         table[i].intercepted = 0;
         table[i].listcount = 0;
