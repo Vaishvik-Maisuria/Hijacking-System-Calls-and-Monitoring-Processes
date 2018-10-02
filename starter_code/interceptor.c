@@ -607,7 +607,7 @@ static int init_function(void) {
     
     //To initialize the table 
     for(i = 0; i < NR_syscalls; i++){
-        table[i].f = sys_call_table[i].f;
+        table[i].f = sys_call_table[i];
         table[i].monitored = 0;
         table[i].intercepted = 0;
         table[i].listcount = 0;
@@ -646,14 +646,13 @@ static int init_function(void) {
  *   then set it back to read only once done.
  * - Ensure synchronization, if needed.
  */
-static void exit_function(void)
-{        
+static void exit_function(void){
 
-	int i;
+
 	spin_lock(&my_table_lock);
     spin_lock(&sys_call_table_lock);
 	/*
-	for(i = 0; i < NR_syscalls; i++){
+	for(int git pi = 0; i < NR_syscalls; i++){
 		
 		if(table[i].monitored == 1){
 			destroy_list(syscall);
